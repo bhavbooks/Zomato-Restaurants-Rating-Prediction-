@@ -10,6 +10,8 @@ DS_Store
 .ebextensions
 .vscode
 .settings.json
+zomato.csv
+
 # C extensions
 *.so
 
@@ -212,3 +214,4 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+zomato.csv
