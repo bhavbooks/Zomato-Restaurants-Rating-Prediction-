@@ -5,3 +5,7 @@ matplotlib
 scikit-learn
 missingno
 dill
+catboost
+xgboost
+dvc[gdrive]
+dvc

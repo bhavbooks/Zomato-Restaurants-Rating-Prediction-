@@ -1,12 +1,15 @@
 # Zomato-Restaurants-Rating-Prediction
 
-# 🍽️ Zomato Restaurant Analysis
-
-### Understanding what drives restaurant ratings, cuisine popularity, and customer preferences in India’s food capital — Bengaluru.
+(dataset -> https://drive.google.com/file/d/1VLYQ8sKgE9fOyFIXn_2YCmWGMmKtymQY/view?usp=sharing )
 
 ---
 
+# 🍽️ Zomato Restaurant Analysis
+
 ## 📌 Project Overview
+
+The purpose of the product is to predict restaurant ratings. For a restaurant, maintaining a good rating is of chief importance. A highly rated restaurant consistently attracts large customers. This is essential to popularize the restaurant in town.
+A good customer evaluation; certainly lays a lasting platform for the restaurant’s profit.
 
 This project focuses on **analyzing the Zomato Bengaluru dataset** to understand the factors affecting restaurant ratings and local food preferences.  
 With over **50,000 restaurants** and new ones opening daily, Bengaluru’s food industry continues to grow rapidly. Yet, many new entrants struggle to compete with established names serving similar cuisines.
@@ -18,6 +21,16 @@ Through this analysis, we aim to uncover:
 - How **price, location, and restaurant type** influence customer satisfaction
 
 ---
+
+## Project Overflow description
+
+- Restaurant Rating Dataset
+- Cleaning and PreProcessing
+- Model Training and Validation
+- Model Optimization
+- Saving Model
+- Application development
+- Application Deployment
 
 ## 🎯 Objective
 
