@@ -1,6 +1,6 @@
 # Zomato-Restaurants-Rating-Prediction
 
-# 🍽️ Zomato Bengaluru Restaurant Analysis
+# 🍽️ Zomato Restaurant Analysis
 
 ### Understanding what drives restaurant ratings, cuisine popularity, and customer preferences in India’s food capital — Bengaluru.
 
