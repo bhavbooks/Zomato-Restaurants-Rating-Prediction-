@@ -218,3 +218,5 @@ zomato.csv
 zomato.csv
 zomato.csv
 .vscode/
+cleaned_data.pkl
+artifacts/cleaned_data.pkl
