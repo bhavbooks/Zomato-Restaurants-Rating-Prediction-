@@ -4,6 +4,7 @@
 
 import os
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Ensure folder exists
 os.makedirs('visualizations', exist_ok=True)
@@ -40,28 +41,18 @@ def setup_autosave():
     print("✅ Auto-save mode activated. Use plt.show('filename') to save automatically.")
 
 # Activate auto-save by default
-setup_auto_save_show()
+setup_autosave()
 
-
-
-## wordcloud 
-
-from wordcloud import WordCloud
-import matplotlib.pyplot as plt
-
-# Generate word cloud from restaurant names
-wordcloud = WordCloud(
-    width=1600,
-    height=800,
-    background_color='white',
-    colormap='viridis',
-    max_words=200,
-    relative_scaling=0.5
-).generate_from_frequencies(rest_df['name'].value_counts())
-
-# Display the word cloud
-plt.figure(figsize=(15, 8))
-plt.imshow(wordcloud, interpolation='bilinear')
-plt.axis('off')
-plt.title("Most Frequent Restaurant Names", fontsize=18, pad=20)
-plt.show(plt.title)
+def box_plot(data, x, y):
+    """
+    Create a box plot for the given data.
+    Example:
+        box_plot(data=df, x="city", y="rating")
+    """
+    plt.figure(figsize=(12, 6))
+    sns.boxplot(data=data, x=x, y=y)
+    plt.title(f'Box Plot of {y} by {x}')
+    plt.xlabel(x)
+    plt.ylabel(y)
+    plt.xticks(rotation=45)
+    plt.tight_layout()

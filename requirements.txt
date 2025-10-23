@@ -9,3 +9,6 @@ catboost
 xgboost
 dvc[gdrive]
 dvc
+folium
+geopy
+plotly
