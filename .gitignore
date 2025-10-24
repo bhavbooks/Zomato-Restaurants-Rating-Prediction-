@@ -220,3 +220,5 @@ zomato.csv
 .vscode/
 cleaned_data.pkl
 artifacts/cleaned_data.pkl
+artifacts/EDA_cleaned.pkl
+EDA_cleaned.pkl

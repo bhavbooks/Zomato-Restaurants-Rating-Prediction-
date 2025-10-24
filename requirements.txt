@@ -12,3 +12,4 @@ dvc
 folium
 geopy
 plotly
+setuptools
