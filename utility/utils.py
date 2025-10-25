@@ -5,6 +5,8 @@
 import os
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
+import pandas as pd
 
 # Ensure folder exists
 os.makedirs('visualizations', exist_ok=True)
@@ -41,7 +43,7 @@ def setup_autosave():
     print("✅ Auto-save mode activated. Use plt.show('filename') to save automatically.")
 
 # Activate auto-save by default
-setup_autosave()
+# setup_autosave()
 
 
 # ------------------------------ Plotting Functions ---------------------------------------------------
@@ -83,27 +85,56 @@ def polar_plot(data, category_col, value_col, filename):
     plt.title(f'Polar Plot of {value_col} by {category_col}', size=15, y=1.1)
     save_plot(filename)
 
+## ------------------------------ Correlation Analysis ------------------------------------------------
 
 
-    ## ----------- -------- -------- Top Rated Cuisines Plot ------- ------------- --------------
+def analyze_corr(df, col, filename):
+    # fig
+    fig = plt.figure(figsize=(12, 12))
+    
+    # mask
+    mask = np.triu(df.corr()) #Because correlation matrices are symmetric (the same above & below the diagonal).
+    
+    # axes 
+    axes = fig.add_axes([0, 0, 1, 1]) #Manually adds an axis taking the full figure area (0,0) to (1,1)
+    sns.heatmap(df.dropna().corr(), annot=True, mask=mask, square=True, fmt='.2g', #show correlation values inside cells
+                vmin=-1, vmax=1, center=0, cmap='viridis', linecolor='white', linewidths=0.5, #fmt='.2g'rounds numbers 
+                cbar_kws= {'orientation': 'vertical'}, ax=axes) 
+    
+    # title
+    axes.text(-1, -1.5, 'Correlation', color='black', fontsize=24, fontweight='bold')
 
-def top_rated_cuisines_plot(cuisine_rating_data):
-    plt.figure(figsize=(16, 9))
-    barplot = sns.barplot(x='Cuisine', y='Rating', data=cuisine_rating_data, palette='coolwarm')    
-    # Add value labels on top of bars for clarity
-    for p in barplot.patches:
-        barplot.annotate(f"{p.get_height():.2f}",
-                        (p.get_x() + p.get_width() / 2., p.get_height()),
-                        ha='center', va='center',
-                        xytext=(0, 5),
-                        textcoords='offset points',
-                        fontsize=11)
+    plt.show(filename)
 
-plt.xlabel('Cuisine', fontsize=16)
-plt.ylabel('Average Rating', fontsize=16)
-plt.title('Top 30 Rated Cuisines on Zomato (Bangalore)', fontsize=22, pad=20)
-plt.xticks(rotation=45, fontsize=12)
-plt.yticks(fontsize=12)
-plt.ylim(0, 5)  # Ratings are out of 5
-plt.tight_layout()
-plt.show("top_30_rated_cuisines")
+    # Printing correlations
+    corr_matrix = df.corr()
+
+
+## ------------------------------ Categorical Conversion ------------------------------------------------
+
+def convert_cat(df, col_list): 
+    df_temp = pd.DataFrame() 
+    df_temp = df
+    col_list = col_list
+    
+    for col in col_list:
+        df_temp[col] = df_temp[col].astype('category')
+        df_temp[col] = df_temp[col].cat.codes
+    return df_temp
+
+## ------------------------------ Outlier Detection ------------------------------------------------
+
+def detect_outliers(df, columns): # using IQR method
+    outliers = pd.DataFrame(False, index=df.index, columns=columns)
+    
+    for col in columns:
+        Q1 = df[col].quantile(0.25) #first quartile
+        Q3 = df[col].quantile(0.75) #third quartile
+        IQR = Q3 - Q1               #interquartile range
+        lower_bound = Q1 - 1.5 * IQR 
+        upper_bound = Q3 + 1.5 * IQR
+        outliers[col] = (df[col] < lower_bound) | (df[col] > upper_bound)
+    
+    return outliers
+
+
