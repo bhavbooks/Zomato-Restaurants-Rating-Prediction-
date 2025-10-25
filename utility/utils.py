@@ -114,12 +114,12 @@ def analyze_corr(df, col, filename):
 
 def convert_cat(df, col_list): 
     df_temp = pd.DataFrame() 
-    df_temp = df
+    df_temp = df.copy()
     col_list = col_list
     
     for col in col_list:
         df_temp[col] = df_temp[col].astype('category')
-        df_temp[col] = df_temp[col].cat.codes
+        # df_temp[col] = df_temp[col].cat.codes
     return df_temp
 
 ## ------------------------------ Outlier Detection ------------------------------------------------
