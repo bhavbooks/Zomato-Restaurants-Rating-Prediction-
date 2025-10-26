@@ -13,3 +13,5 @@ folium
 geopy
 plotly
 setuptools
+statsmodels
+imblearn
