@@ -224,3 +224,7 @@ artifacts/EDA_cleaned.pkl
 EDA_cleaned.pkl
 EDA_final_cleaned.pkl
 artifacts/EDA_final_cleaned.pkl
+artifacts/prepared_data/X.pkl
+artifacts/prepared_data/Y.pkl
+X.pkl
+Y.pkl
