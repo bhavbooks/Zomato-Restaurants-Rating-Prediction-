@@ -228,3 +228,6 @@ artifacts/prepared_data/X.pkl
 artifacts/prepared_data/Y.pkl
 X.pkl
 Y.pkl
+src/random_forest_model.pkl
+random_forest_model.pkl
+random_forest_model.pkl
