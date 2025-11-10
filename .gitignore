@@ -231,3 +231,5 @@ Y.pkl
 src/random_forest_model.pkl
 random_forest_model.pkl
 random_forest_model.pkl
+df_clean.pkl
+artifacts/df_clean.pkl
