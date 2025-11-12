@@ -15,3 +15,5 @@ plotly
 setuptools
 statsmodels
 imblearn
+catboost
+lightgbm
